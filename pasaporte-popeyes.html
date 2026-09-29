@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pasaporte Popeyes</title>
+<style>
+:root{--o:#E8590C;--od:#B84300;--bg:#FFF6EC;--card:#fff;--tx:#3a2416;--mu:#8a6f5e;--ln:#f0dccb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d130c;--card:#2a1c12;--tx:#f7e9dc;--mu:#c2a998;--ln:#4a3323}}
+:root[data-theme="dark"]{--bg:#1d130c;--card:#2a1c12;--tx:#f7e9dc;--mu:#c2a998;--ln:#4a3323}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--tx);font-family:"Trebuchet MS",system-ui,sans-serif;max-width:520px;margin:0 auto;padding-bottom:80px}
+.hero{background:var(--o);color:#fff;padding:28px 22px;text-align:center;border-radius:0 0 28px 28px}
+.hero h1{margin:6px 0;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:1px}
+.hero small{opacity:.9}.big{font-size:64px}
+.sec{padding:18px}h2{margin:0 0 8px;color:var(--o)}
+p{color:var(--mu);line-height:1.4}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{background:var(--card);border:2px solid var(--ln);border-top:8px solid var(--c);border-radius:14px;padding:10px;text-align:center}
+.cat b{font-size:13px;display:block;color:var(--c)}.cat .e{font-size:38px;margin:4px 0}
+.st{display:flex;gap:6px;justify-content:center}
+.st button{width:32px;height:32px;border-radius:50%;border:2px dashed var(--c);background:transparent;font-size:16px;padding:0;cursor:pointer;color:#fff}
+.st button.on{background:var(--c);border-style:solid}
+.bar{height:14px;background:var(--ln);border-radius:9px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:var(--o);width:0;transition:width .4s}
+.lv{display:flex;gap:12px;align-items:center;background:var(--card);border:2px solid var(--ln);border-radius:14px;padding:12px;margin-bottom:10px}
+.lv.ok{border-color:var(--o)}.lv .pc{margin-left:auto;background:var(--o);color:#fff;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-weight:700;flex:none}
+.lv.lock{opacity:.55}.lv h3{margin:0;font-size:15px}.lv p{margin:2px 0 0;font-size:13px}
+ol{padding-left:0;list-style:none;margin:0}ol li{display:flex;gap:10px;align-items:center;margin:10px 0;color:var(--mu)}
+ol span{background:var(--o);color:#fff;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-weight:700;flex:none}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:var(--card);border-top:1px solid var(--ln);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;padding:10px 0;font-size:12px;color:var(--mu);cursor:pointer}nav button.a{color:var(--o);font-weight:700}nav em{display:block;font-style:normal;font-size:22px}
+.btn{background:var(--o);color:#fff;border:0;border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer}
+.ghost{background:none;border:0;color:var(--mu);text-decoration:underline;font-size:12px;cursor:pointer;margin-top:14px}
+.v{display:none}.v.a{display:block}
+</style></head><body>
+<section class="v a" id="v0">
+ <div class="hero"><div class="big">🐓</div><small>👑 Popeyes</small><h1>Pasaporte<br>Popeyes</h1><small>Tu aventura de sabor comienza aquí</small></div>
+ <div class="sec"><h2>¿Cómo funciona?</h2>
+ <ol><li><span>1</span>Visita cualquier tienda Popeyes y realiza tu pedido.</li><li><span>2</span>Muestra tu pasaporte digital en caja o al personal.</li><li><span>3</span>Te sellarán el plato que consumiste.</li><li><span>4</span>Sigue coleccionando todos los platos de la carta.</li><li><span>5</span>¡Completa tu pasaporte y recibe tus descuentos!</li></ol>
+ <p style="text-align:center"><button class="btn" onclick="go(1)">Abrir mi pasaporte</button></p>
+ <p style="text-align:center"><b style="color:var(--o)">¡Entre más pruebes, más ganas!</b></p></div>
+</section>
+<section class="v" id="v1"><div class="sec"><h2>Tu pasaporte Popeyes</h2>
+ <p>Visita nuestras tiendas, consume tus platos favoritos y sella cada categoría. ¡Completa todo el pasaporte y recibe descuentos!</p>
+ <b id="cnt"></b><div class="bar"><i id="bar"></i></div>
+ <div class="grid" id="grid"></div>
+ <p style="text-align:center"><button class="ghost" onclick="reset()">Reiniciar pasaporte (demo)</button></p></div></section>
+<section class="v" id="v2"><div class="sec"><h2>Tus recompensas</h2><div id="lvs"></div><p style="text-align:center"><b style="color:var(--o)">¡Entre más pruebes, más ganas!</b></p></div></section>
+<nav><button class="a" onclick="go(0)"><em>🏠</em>Inicio</button><button onclick="go(1)"><em>🛂</em>Mi pasaporte</button><button onclick="go(2)"><em>🎁</em>Recompensas</button></nav>
+<script>
+const C=[["Pollo","🍗","#E8590C"],["Sándwiches y Hamburguesas","🍔","#C9A227"],["Tiras y Alitas","🍖","#E0574B"],["Complementos","🍟","#3FA58F"],["Ensaladas","🥗","#7B61C4"],["Bebidas","🥤","#3A8FD1"],["Postres","🍨","#D9739B"],["Productos Especiales","🔥","#E8842C"]];
+const N=C.length*4,L=[["Nivel 1 – Explorador","Completa 1/3 de tu pasaporte y obtén un 10% de descuento en tu próxima compra.","10%",Math.ceil(N/3)],["Nivel 2 – Fan Popeyes","Completa 2/3 de tu pasaporte y obtén un 15% de descuento en tu próxima compra.","15%",Math.ceil(2*N/3)],["Nivel 3 – Maestro del Sabor","Completa todo el pasaporte y recibe un 20% de descuento + una sorpresa especial.","20%",N]];
+let s=Array(N).fill(0);
+try{const r=JSON.parse(localStorage.getItem("pp")||"null");if(r&&r.length===N)s=r}catch(e){}
+function save(){try{localStorage.setItem("pp",JSON.stringify(s))}catch(e){}}
+function go(i){document.querySelectorAll(".v").forEach((v,k)=>v.classList.toggle("a",k===i));document.querySelectorAll("nav button").forEach((b,k)=>b.classList.toggle("a",k===i));scrollTo(0,0)}
+function tap(i){s[i]=s[i]?0:1;save();draw()}
+function reset(){if(confirm("¿Reiniciar todos los sellos?")){s.fill(0);save();draw()}}
+function draw(){
+ const n=s.reduce((a,b)=>a+b,0);
+ document.getElementById("cnt").textContent=n+" de "+N+" sellos";
+ document.getElementById("bar").style.width=(n/N*100)+"%";
+ document.getElementById("grid").innerHTML=C.map((c,k)=>`<div class="cat" style="--c:${c[2]}"><b>${c[0]}</b><div class="e">${c[1]}</div><div class="st">${[0,1,2,3].map(j=>`<button class="${s[k*4+j]?"on":""}" onclick="tap(${k*4+j})">${s[k*4+j]?"✓":""}</button>`).join("")}</div></div>`).join("");
+ document.getElementById("lvs").innerHTML=L.map(l=>{const ok=n>=l[3];return `<div class="lv ${ok?"ok":"lock"}"><div style="font-size:26px">${ok?"👑":"🔒"}</div><div><h3>${l[0]}</h3><p>${l[1]}</p><p><b>${Math.min(n,l[3])}/${l[3]} sellos${ok?" · ¡Desbloqueado!":""}</b></p></div><div class="pc">${l[2]}</div></div>`}).join("");
+}
+draw();
+</script></body></html>
